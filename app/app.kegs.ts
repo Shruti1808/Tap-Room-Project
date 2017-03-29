@@ -6,4 +6,7 @@ export class Keg {
     markEmpty(){
         this.empty = true;
     }
+
+    
+
 }

@@ -12,6 +12,7 @@ import { Keg } from './app.kegs';
      console.log(keg.kegName);
  }
 
+
 @Component({
     selector: 'app-root',
     template: `
@@ -19,9 +20,9 @@ import { Keg } from './app.kegs';
     <div *ngFor="let keg of kegs">
     <hr>
         <h3>{{keg.kegName}} by {{keg.kegBrand}}</h3>
-        <h4>Price:{{keg.price}}</h4>
-        <h4>Alcohol Content: {{keg.alcoholContent}}</h4>
-        
+        <h4>Price: {{pintCost(keg.price)}} /pint</h4>
+        <h4>Alcohol Content: {{keg.alcoholContent}}%</h4>
+
     </div>
 
     <form>
@@ -48,5 +49,12 @@ export class AppComponent {
         this.kegs.push(new Keg(newKegName, newKegBrand, newPrice, newAlcoholContent, newQuantity))
     }
 
+    editKeg(clickedKeg) {
+    this.selectedKeg = clickedKeg;
+  }
+
+    // pintCost = function(kegCost) {
+    //     var pintPrice:number = 5*(kegCost/this.quantity);
+    // }
 
 }
