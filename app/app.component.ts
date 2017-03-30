@@ -17,11 +17,11 @@ import {EditKegComponent} from './edit-keg.component';
 @Component({
     selector: 'app-root',
     template: `
-    <h1>Welcome to the Tap Room</h1>
-    <div *ngFor="let keg of kegs">
+    <h1 class="test">Welcome to the Tap Room</h1>
+    <div class="beer-panel"*ngFor="let keg of kegs">
     <hr>
-        <h3>{{keg.kegName}} by {{keg.kegBrand}}</h3>
-        <h4>Price: {{keg.price}} /pint</h4>
+        <h3 class="beer-heading"><span class="beer-name">{{keg.kegName}}</span> <em>by</em> <span class="beer-brand">{{keg.kegBrand}}</span></h3>
+        <h4 class>Price: {{keg.price}} /pint</h4>
         <h4>Alcohol Content: {{keg.alcoholContent}}%</h4>
         <button (click) = "editKeg(keg)">Edit</button>
     </div>
