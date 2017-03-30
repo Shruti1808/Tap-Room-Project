@@ -1,5 +1,6 @@
 import  { Component } from '@angular/core';
 import { Keg } from './app.kegs';
+import {EditKegComponent} from './edit-keg.component';
 
  const Kegs: Keg[]  = [];
 
@@ -20,10 +21,11 @@ import { Keg } from './app.kegs';
     <div *ngFor="let keg of kegs">
     <hr>
         <h3>{{keg.kegName}} by {{keg.kegBrand}}</h3>
-        <h4>Price: {{pintCost(keg.price)}} /pint</h4>
+        <h4>Price: {{keg.price}} /pint</h4>
         <h4>Alcohol Content: {{keg.alcoholContent}}%</h4>
-
+        <button (click) = "editKeg(keg)">Edit</button>
     </div>
+    <edit-kegs [selectedKeg] = "selectedKeg"></edit-kegs>
 
     <form>
         <input [(ngModel)] = "newKegName" type="text" placeholder="Name"name="Name">
@@ -45,13 +47,18 @@ Content">
 export class AppComponent {
     kegs = Kegs;
 
+    selectedKeg = null;
+
+
     newBeer(newKegName, newKegBrand, newPrice, newAlcoholContent, newQuantity) {
         this.kegs.push(new Keg(newKegName, newKegBrand, newPrice, newAlcoholContent, newQuantity))
     }
 
     editKeg(clickedKeg) {
-    this.selectedKeg = clickedKeg;
-  }
+        this.selectedKeg = clickedKeg;
+    }
+
+
 
     // pintCost = function(kegCost) {
     //     var pintPrice:number = 5*(kegCost/this.quantity);
