@@ -15,5 +15,3 @@ Build a small Angular app for a bar (or kombucha store) to track their kegs. Her
 **As a patron, I want to have kegs prices to be color-coded for easy readability. Perhaps based on their price (greater or less than $5 per pint, perhaps) or the particular style of beer or kombucha.**
 
 **As a patron, I want to use the alcohol content property to display stronger beers differently than weaker beers.**
-
-![Picture](picture.png)

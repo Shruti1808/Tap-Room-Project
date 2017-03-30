@@ -18,12 +18,16 @@ import {EditKegComponent} from './edit-keg.component';
     selector: 'app-root',
     template: `
     <h1 class="test">Welcome to the Tap Room</h1>
-    <div class="beer-panel"*ngFor="let keg of kegs">
-    <hr>
+    <div class="beer-panel"  *ngFor="let keg of kegs">
+    <div [class] = "quantityColor(keg)">
         <h3 class="beer-heading"><span class="beer-name">{{keg.kegName}}</span> <em>by</em> <span class="beer-brand">{{keg.kegBrand}}</span></h3>
         <h4 class>Price: {{keg.price}} /pint</h4>
         <h4>Alcohol Content: {{keg.alcoholContent}}%</h4>
+        <h4>Keg Quantity: {{keg.quantity}}</h4>
         <button (click) = "editKeg(keg)">Edit</button>
+
+        <button (click)= "sellPint(keg)">Sell Pint</button>
+    </div>
     </div>
     <edit-kegs [selectedKeg] = "selectedKeg"></edit-kegs>
 
@@ -46,7 +50,6 @@ Content">
 
 export class AppComponent {
     kegs = Kegs;
-
     selectedKeg = null;
 
 
@@ -56,6 +59,20 @@ export class AppComponent {
 
     editKeg(clickedKeg) {
         this.selectedKeg = clickedKeg;
+    }
+
+    quantityColor(keg){
+        if(keg.quantity <= 10){
+            return "low-beer";
+        }
+    }
+
+    sellPint(clickedKeg){
+        if(clickedKeg.quantity <= 0){
+            return clickedKeg.quantity = 0;
+        } else {
+            clickedKeg.quantity -= 1;
+        }
     }
 
 
